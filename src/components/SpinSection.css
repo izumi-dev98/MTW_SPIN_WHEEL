@@ -144,6 +144,30 @@
   cursor: not-allowed;
 }
 
+.random-sort-button {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  color: white;
+  border: none;
+  padding: 0.6rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.random-sort-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(67, 233, 123, 0.4);
+}
+
+.random-sort-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .winner-display {
   background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
   padding: 1rem 2rem;
@@ -390,6 +414,41 @@
   flex-wrap: wrap;
 }
 
+.range-form {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 2px solid #e2e8f0;
+}
+
+.shuffle-container {
+  padding: 1rem 0;
+  border-top: 2px solid #e2e8f0;
+  margin-top: 1rem;
+}
+
+.shuffle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.shuffle-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+.shuffle-label span {
+  user-select: none;
+}
+
 .crud-input {
   flex: 1;
   min-width: 200px;
@@ -397,12 +456,20 @@
   border: 2px solid #e2e8f0;
   border-radius: 10px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 500;
 }
 
 .crud-input:focus {
   outline: none;
   border-color: #667eea;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.crud-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .crud-button {
@@ -423,6 +490,21 @@
 .cancel-button {
   background: #e2e8f0;
   color: #2d3748;
+}
+
+.delete-all-button {
+  background: #f56565;
+  color: white;
+}
+
+.random-sort-button {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  color: white;
+}
+
+.delete-all-button {
+  background: #f56565;
+  color: white;
 }
 
 .crud-button:hover {

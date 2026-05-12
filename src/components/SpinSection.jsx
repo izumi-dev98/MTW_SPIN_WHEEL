@@ -12,6 +12,7 @@ const SpinSection = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isDataMinimized, setIsDataMinimized] = useState(false);
   const [results, setResults] = useState([]);
+  const [rangeEnd, setRangeEnd] = useState('');
 
   // Load items from localStorage on mount
   useEffect(() => {
@@ -122,7 +123,7 @@ const SpinSection = () => {
     }, 4000);
   };
 
-  const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b', '#fa709a', '#ff6b6b', '#feca57'];
+  const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b', '#fa709a', '#ff6b6b', '#feca57', '#ee5a6f', '#c471ed', '#12cbc4', '#fda7df'];
 
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
@@ -134,6 +135,30 @@ const SpinSection = () => {
 
   const handleRemoveResult = (id) => {
     setResults(results.filter(result => result.id !== id));
+  };
+
+  const handleClearAll = () => {
+    setItems([]);
+  };
+
+  const handleAddRange = () => {
+    const end = parseInt(rangeEnd);
+    if (end > 0 && end <= 1000) {
+      const newItems = [];
+      for (let i = 1; i <= end; i++) {
+        newItems.push({
+          id: Date.now() + i,
+          text: i.toString()
+        });
+      }
+      setItems(newItems);
+      setRangeEnd('');
+    }
+  };
+
+  const handleRandomSort = () => {
+    const shuffled = [...items].sort(() => Math.random() - 0.5);
+    setItems(shuffled);
   };
 
   return (
@@ -184,8 +209,8 @@ const SpinSection = () => {
                       x={textX}
                       y={textY}
                       fill="#fff"
-                      fontSize="14"
-                      fontWeight="600"
+                      fontSize="12"
+                      fontWeight="700"
                       textAnchor="middle"
                       dominantBaseline="middle"
                       transform={`rotate(${textAngle}, ${textX}, ${textY})`}
@@ -256,6 +281,38 @@ const SpinSection = () => {
                 Cancel
               </button>
             )}
+          </div>
+
+          <div className="range-form">
+            <input
+              type="number"
+              className="crud-input"
+              placeholder="Add 1 to N (e.g., 100)"
+              value={rangeEnd}
+              onChange={(e) => setRangeEnd(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handleAddRange()}
+              min="1"
+              max="1000"
+            />
+            <button
+              className="crud-button add-button"
+              onClick={handleAddRange}
+            >
+              Add Range
+            </button>
+            <button
+              className="crud-button delete-all-button"
+              onClick={handleClearAll}
+            >
+              Clear All
+            </button>
+            <button
+              className="crud-button random-sort-button"
+              onClick={handleRandomSort}
+              disabled={items.length === 0}
+            >
+              🔀 Random Sort
+            </button>
           </div>
 
           <div className="items-list">
