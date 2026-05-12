@@ -499,26 +499,58 @@
 @media (max-width: 1024px) {
   .spin-container {
     grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .spin-left {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .spin-right {
+    height: auto;
+    min-height: 50vh;
   }
 }
 
 @media (max-width: 768px) {
   .spin-section {
-    padding: 2rem 0;
+    padding: 0;
   }
 
   .spin-container {
-    padding: 0 1rem;
+    padding: 0;
+    grid-template-columns: 1fr;
   }
 
-  .spin-title,
-  .crud-title {
-    font-size: 1.8rem;
+  .spin-left {
+    padding: 1.5rem;
+    gap: 1.5rem;
+    height: auto;
+    min-height: 80vh;
+  }
+
+  .spin-title {
+    font-size: 1.3rem;
   }
 
   .wheel {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
+  }
+
+  .spin-button {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .spin-right {
+    padding: 1.5rem;
+    height: auto;
+  }
+
+  .crud-title {
+    font-size: 1.3rem;
   }
 
   .crud-form {
@@ -527,5 +559,39 @@
 
   .crud-input {
     min-width: 100%;
+  }
+
+  .items-list {
+    max-height: 250px;
+  }
+
+  .results-list {
+    max-height: 150px;
+  }
+
+  .fullscreen-button {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .spin-left.fullscreen .wheel {
+    width: 350px;
+    height: 350px;
+  }
+
+  .spin-left.fullscreen .spin-title {
+    font-size: 2rem;
+  }
+
+  .spin-left.fullscreen .spin-button {
+    padding: 0.8rem 3rem;
+    font-size: 1.2rem;
+  }
+
+  .floating-expand-button {
+    right: 1rem;
+    width: 45px;
+    height: 45px;
   }
 }
